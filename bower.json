@@ -1,17 +1,32 @@
 {
   "name": "zdkelt-input-date",
   "description": "a date picker webcomponent",
+  "version": "1.0.0-rc1",
   "main": "zdkelt-input-date.html",
   "authors": [
-    "Fabrice Le Coz"
+    "zeDesk <dev@zedesk.net>"
   ],
   "license": "ISC",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "calendar",
+    "date-picker",
+    "date",
+    "input"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zedesk/zdkelt-input-date.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "demo"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.4",
