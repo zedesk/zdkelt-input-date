@@ -17,5 +17,8 @@
     "polymer": "Polymer/polymer#^1.2.4",
     "zdkelt-calendar": "zedesk/zdkelt-calendar#^1.0.0",
     "moment": "^2.11.1"
+  },
+  "resolution": {
+    "moment":"2.11.1"
   }
 }

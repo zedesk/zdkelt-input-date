@@ -13,27 +13,18 @@
 <!--
 A date picker component, based on `zdkelt-calendar`
 
-version : __0.0.0__
+version : __1.0.0-rc1__
 
 Example:
 
     <zdkelt-input-date i18n="fr" value="2016-01-25"></zdkelt-input-date>
 
-![zdkelt-input-date](hero.png)
-
-### Styling
-
-
-
 @group zdk Elements
 @demo
 -->
-<style is="custom-style">
 
-</style>
-
-<dom-module id="zdkelt-calendar">
-	<style>
+<dom-module id="zdkelt-input-date">
+	<style is="custom-style">
 		:host {
 			display: inline-block;
 		}
@@ -51,22 +42,36 @@ Example:
 			margin-top: 35px;
 			@apply(--shadow-elevation-2dp);
 		}
-
-		zdkelt-calendar {
-			--zdk-calendar-title: {
-				background: var(--default-primary-color);
-				color: var(--text-primary-color);
-			};
-			--zdk-calendar-action: {
-				background-color: var(--paper-tab-ink);
-				color: #2b3134;
-			};
+		
+		paper-icon-button {
+			width: 25px;
+			padding: 3px;
 		}
+		
+		paper-input {
+			text-align:right;
+		}
+		
+		
 	</style>
 	<template>
-		<paper-input value="{{value}}"></paper-input>
-		<paper-icon icon=""></paper-icon>
-
+		<div class="layout horizontal">
+			<paper-input label="[[label]]" id="inputDate" value="{{value}}" >
+				<paper-icon-button suffix id="clear" disabled icon="clear" on-tap="_clear"></paper-icon-button>
+				<paper-icon-button suffix icon="event" on-tap="_showCalendar"></paper-icon-button>
+			</paper-input>
+		</div>
+		<iron-dropdown id="dropdown" 
+		               vertical-align="[[verticalAlign]]"
+		               horizontal-align="[[horizontalAlign]]"
+		               entryAnimation="scale-up-animation">
+			<div class="dropdown-content">
+				<zdkelt-calendar id="calendar" value="{{value}}" on-change="_setNewValue"
+				                 i18n="[[i18n]]"></zdkelt-calendar>
+			</div>
+		</iron-dropdown>
 	</template>
+	
 	<script type="text/javascript" src="zdkelt-input-date.js"></script>
+	
 </dom-module>
