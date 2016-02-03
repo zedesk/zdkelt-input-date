@@ -1,0 +1,21 @@
+{
+  "name": "zdkelt-input-date",
+  "description": "a date picker webcomponent",
+  "main": "zdkelt-input-date.html",
+  "authors": [
+    "Fabrice Le Coz"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.4",
+    "zdkelt-calendar": "zedesk/zdkelt-calendar#^1.0.0",
+    "moment": "^2.11.1"
+  }
+}

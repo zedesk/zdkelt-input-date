@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../zdkelt-calendar/zdkelt-calendar.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../moment/min/moment-with-locales.min.js">
+<link rel="import" href="../neon-animation/animations/scale-up-animation.html">
+
+<!--
+A date picker component, based on `zdkelt-calendar`
+
+version : __0.0.0__
+
+Example:
+
+    <zdkelt-input-date i18n="fr" value="2016-01-25"></zdkelt-input-date>
+
+![zdkelt-input-date](hero.png)
+
+### Styling
+
+
+
+@group zdk Elements
+@demo
+-->
+<style is="custom-style">
+
+</style>
+
+<dom-module id="zdkelt-calendar">
+	<style>
+		:host {
+			display: inline-block;
+		}
+
+		.dropdown-content {
+			background: white;
+		}
+
+		.buttons {
+			text-align: right;
+		}
+
+		.dropdown-content {
+			border: 1px solid lightgray;
+			margin-top: 35px;
+			@apply(--shadow-elevation-2dp);
+		}
+
+		zdkelt-calendar {
+			--zdk-calendar-title: {
+				background: var(--default-primary-color);
+				color: var(--text-primary-color);
+			};
+			--zdk-calendar-action: {
+				background-color: var(--paper-tab-ink);
+				color: #2b3134;
+			};
+		}
+	</style>
+	<template>
+		<paper-input value="{{value}}"></paper-input>
+		<paper-icon icon=""></paper-icon>
+
+	</template>
+	<script type="text/javascript" src="zdkelt-input-date.js"></script>
+</dom-module>
