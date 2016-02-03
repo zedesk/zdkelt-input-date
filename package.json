@@ -1,0 +1,28 @@
+{
+  "name": "zdkelt-input-date",
+  "version": "1.0.0-rc1",
+  "description": "a date picker webcomponent",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean":"rm -rf bower_components",
+    "postinstall":"bower install",
+    "start":"polyserve"
+  },
+  "repository": {
+    "type":"git",
+    "url":"git+https://github.com/zedesk/zdkelt-input-date.git"
+  },
+  "bugs": {
+    "url":"https://github.com/zedesk/zdkelt-input-date/issues"
+  },
+  "author": "Fabrice Le Coz",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "crisper": "^2.0.1",
+    "jscs": "^2.9.0",
+    "polylint": "^2.9.0",
+    "polyserve": "^0.5.0",
+    "vulcanize": "^1.14.5"
+  }
+}

@@ -1,0 +1,77 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../zdkelt-calendar/zdkelt-calendar.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../moment/min/moment-with-locales.min.js">
+<link rel="import" href="../neon-animation/animations/scale-up-animation.html">
+
+<!--
+A date picker component, based on `zdkelt-calendar`
+
+version : __1.0.0-rc1__
+
+Example:
+
+    <zdkelt-input-date i18n="fr" value="2016-01-25"></zdkelt-input-date>
+
+@group zdk Elements
+@demo
+-->
+
+<dom-module id="zdkelt-input-date">
+	<style is="custom-style">
+		:host {
+			display: inline-block;
+		}
+
+		.dropdown-content {
+			background: white;
+		}
+
+		.buttons {
+			text-align: right;
+		}
+
+		.dropdown-content {
+			border: 1px solid lightgray;
+			margin-top: 35px;
+			@apply(--shadow-elevation-2dp);
+		}
+		
+		paper-icon-button {
+			width: 25px;
+			padding: 3px;
+		}
+		
+		paper-input {
+			text-align:right;
+		}
+		
+		
+	</style>
+	<template>
+		<div class="layout horizontal">
+			<paper-input label="[[label]]" id="inputDate" value="{{value}}" >
+				<paper-icon-button suffix id="clear" disabled icon="clear" on-tap="_clear"></paper-icon-button>
+				<paper-icon-button suffix icon="event" on-tap="_showCalendar"></paper-icon-button>
+			</paper-input>
+		</div>
+		<iron-dropdown id="dropdown" 
+		               vertical-align="[[verticalAlign]]"
+		               horizontal-align="[[horizontalAlign]]"
+		               entryAnimation="scale-up-animation">
+			<div class="dropdown-content">
+				<zdkelt-calendar id="calendar" value="{{value}}" on-change="_setNewValue"
+				                 i18n="[[i18n]]"></zdkelt-calendar>
+			</div>
+		</iron-dropdown>
+	</template>
+	
+	<script type="text/javascript" src="zdkelt-input-date.js"></script>
+	
+</dom-module>
