@@ -42,7 +42,7 @@ Example:
 			margin-top: 35px;
 			@apply(--shadow-elevation-2dp);
 		}
-		
+
 		paper-icon-button {
 			width: 25px;
 			padding: 3px;
@@ -51,12 +51,12 @@ Example:
 	</style>
 	<template>
 		<div class="layout horizontal">
-			<paper-input label="[[label]]" id="inputDate" value="{{value}}" >
+			<paper-input label="[[label]]" id="inputDate" value="{{value}}"  no-label-float="[[noLabelFloat]]">
 				<paper-icon-button suffix id="clear" disabled icon="clear" on-tap="_clear"></paper-icon-button>
 				<paper-icon-button suffix icon="event" on-tap="_showCalendar"></paper-icon-button>
 			</paper-input>
 		</div>
-		<iron-dropdown id="dropdown" 
+		<iron-dropdown id="dropdown"
 		               vertical-align="[[verticalAlign]]"
 		               horizontal-align="[[horizontalAlign]]"
 		               entryAnimation="scale-up-animation">
@@ -66,7 +66,7 @@ Example:
 			</div>
 		</iron-dropdown>
 	</template>
-	
+
 	<script type="text/javascript" src="zdkelt-input-date.js"></script>
-	
+
 </dom-module>
