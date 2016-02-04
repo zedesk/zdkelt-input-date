@@ -1,6 +1,6 @@
 {
   "name": "zdkelt-input-date",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc2",
   "description": "a date picker webcomponent",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
