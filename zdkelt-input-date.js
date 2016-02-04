@@ -70,22 +70,27 @@
 			maxDate        : {
 				type              : String,
 				observer          : '_maxDateChanged'
-			},
-			/**
-			 * Get the date format for the current locale
-			 */
-			_dateFormat    : {
-				type : String,
-				value: function () {
-					return moment.localeData()._longDateFormat.L;
-				}
 			}
 		},
+		/**
+		 * 
+		 * @returns String
+		 * @private
+		 */
+		_dateFormat: function() {
+			moment.locale(this.i18n);
+			return moment.localeData()._longDateFormat.L;
+		},
+		/**
+		 * 
+		 * @param newValue
+		 * @private
+		 */
 		_valueChanged  : function (newValue) {
 			if (newValue) {
 				moment.locale(this.i18n);
 				this.$.clear.disabled = false;
-				if (!moment(newValue, this._dateFormat).isValid()) {
+				if (!moment(newValue, this._dateFormat()).isValid()) {
 					this.$.inputDate.invalid = true;
 					this.invalid = true;
 				} else {
@@ -106,7 +111,7 @@
 		 * @private
 		 */
 		_formatDate : function() {
-			return moment(this.value,this._dateFormat).format("YYYY-MM-DD");
+			return moment(this.value,this._dateFormat()).format("YYYY-MM-DD");
 		},
 		/**
 		 * Set the minimal acceptable value
@@ -132,7 +137,7 @@
 		 * @private
 		 */
 		_maxDateChanged: function (newValue) {
-			if (moment(newValue, this._dateFormat).isValid()) {
+			if (moment(newValue, this._dateFormat()).isValid()) {
 				this.$.calendar.maxDate = this._formatDate();
 				if( this.value && !this.invalid && this._formatDate() > this.$.calendar.maxDate) {
 					this.$.inputDate.invalid = true;
@@ -155,8 +160,7 @@
 		 */
 		_showCalendar   : function () {
 			if (this.value && !this.$.inputDate.invalid) {
-				moment.locale(this.i18n);
-				this.$.calendar.value = moment(this.value, this._dateFormat).format('YYYY-MM-DD');
+				this.$.calendar.value = moment(this.value, this._dateFormat()).format('YYYY-MM-DD');
 				this.$.calendar.initDate = this.$.calendar.value;
 
 			} else {
