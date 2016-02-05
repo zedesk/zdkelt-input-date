@@ -1,7 +1,7 @@
 {
   "name": "zdkelt-input-date",
   "description": "a date picker webcomponent",
-  "version": "1.0.0-rc2",
+  "version": "1.0.0-rc3",
   "main": "zdkelt-input-date.html",
   "authors": [
     "zeDesk <dev@zedesk.net>"
