@@ -12,7 +12,7 @@
 <!--
 A date picker component, based on `zdkelt-calendar`
 
-version : __1.0.0-rc2__
+version : __1.0.0-rc3__
 
 Example:
 
@@ -49,9 +49,9 @@ Example:
 	</style>
 	<template>
 		<div class="layout horizontal">
-			<paper-input label="[[label]]" id="inputDate" value="{{value}}"  no-label-float="[[noLabelFloat]]">
+			<paper-input label="[[label]]" id="inputDate" value="{{_displayValue}}"  no-label-float="[[noLabelFloat]]" on-change="_checkEvent">
 				<paper-icon-button suffix id="clear" disabled icon="zdkicons:clear" on-tap="_clear"></paper-icon-button>
-				<paper-icon-button suffix icon="zdkicons:event" on-tap="_showCalendar"></paper-icon-button>
+				<paper-icon-button suffix id="showcal" icon="zdkicons:event" on-tap="_showCalendar"></paper-icon-button>
 			</paper-input>
 		</div>
 		<iron-dropdown id="dropdown"
