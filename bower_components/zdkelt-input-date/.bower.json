@@ -1,0 +1,53 @@
+{
+  "name": "zdkelt-input-date",
+  "description": "a date picker webcomponent",
+  "main": "zdkelt-input-date.html",
+  "authors": [
+    "zeDesk <dev@zedesk.net>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "calendar",
+    "date-picker",
+    "date",
+    "input"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zedesk/zdkelt-input-date.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.4",
+    "zdkelt-calendar": "zedesk/zdkelt-calendar#^1.0.3",
+    "moment": "^2.11.1",
+    "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.6",
+    "paper-button": "PolymerElements/paper-button#^1.0.11",
+    "paper-input": "PolymerElements/paper-input#^1.1.5",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.7",
+    "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^1.0.9"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.4",
+    "web-component-tester": "^4.0.0"
+  },
+  "homepage": "https://github.com/zedesk/zdkelt-input-date",
+  "_release": "5ea1955fc1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "develop",
+    "commit": "5ea1955fc1e02f5c83305c0fb85cdeadb07379a9"
+  },
+  "_source": "git://github.com/zedesk/zdkelt-input-date.git",
+  "_target": "develop",
+  "_originalSource": "zedesk/zdkelt-input-date",
+  "_direct": true
+}
