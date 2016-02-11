@@ -1,7 +1,7 @@
 {
   "name": "zdkelt-input-date",
   "description": "a date picker webcomponent",
-  "version": "1.0.0-rc3",
+  "version": "1.0.0-rc4",
   "main": "zdkelt-input-date.html",
   "authors": [
     "zeDesk <dev@zedesk.net>"
@@ -24,9 +24,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests",
-    "demo"
+    "tests"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.4",

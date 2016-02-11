@@ -11,6 +11,7 @@
         type: String,
         reflectToAttribute: true,
         value: '',
+        notify: true,
         observer: '_valueChanged'
       },
       /**
