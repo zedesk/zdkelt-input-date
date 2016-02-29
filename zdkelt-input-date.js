@@ -33,11 +33,12 @@
         value: false
       },
       /**
-      * indicate if the value is valid
+      * indicate if the value is invalid
       */
       invalid: {
         type: Boolean,
-        reflectToAttribute: true
+        reflectToAttribute: true,
+        notify: true
       },
       /**
        * Define the current locale
@@ -82,6 +83,14 @@
       maxDate: {
         type: String,
         observer: '_maxDateChanged'
+      },
+      /**
+      * The error message to disaply if the value is invalid
+      */
+      errorMessage: {
+        type: String,
+        value:'',
+        notify: true
       }
     },
     /**
