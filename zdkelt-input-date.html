@@ -50,22 +50,24 @@ Example:
 	<template>
 		<div class="layout horizontal">
 			<paper-input label="[[label]]" id="inputDate"
-			         value="{{_displayValue}}"
-					 no-label-float="[[noLabelFloat]]"
-					 error-message="[[errorMessage]]"
-					 invalid="[[invalid]]"
-					 on-change="_checkEvent">
+			        value="{{_displayValue}}"
+					no-label-float="[[noLabelFloat]]"
+					error-message="[[errorMessage]]"
+					invalid="{{invalid}}"
+					on-change="_checkEvent">
 				<paper-icon-button suffix id="clear" disabled icon="zdkicons:clear" on-tap="_clear"></paper-icon-button>
 				<paper-icon-button suffix id="showcal" icon="zdkicons:event" on-tap="_showCalendar"></paper-icon-button>
 			</paper-input>
 		</div>
 		<iron-dropdown id="dropdown"
-		               vertical-align="[[verticalAlign]]"
-		               horizontal-align="[[horizontalAlign]]"
-		               entryAnimation="scale-up-animation">
+		        vertical-align="[[verticalAlign]]"
+				horizontal-align="[[horizontalAlign]]"
+				entryAnimation="scale-up-animation">
 			<div class="dropdown-content">
-				<zdkelt-calendar id="calendar" value="{{value}}" on-change="_setNewValue"
-				                 i18n="[[i18n]]"></zdkelt-calendar>
+				<zdkelt-calendar id="calendar" value="{{value}}" on-change="_setNewValue" i18n="[[i18n]]"></zdkelt-calendar>
+				<div class="buttons">
+					<content></content>
+				</div>
 			</div>
 		</iron-dropdown>
 	</template>
