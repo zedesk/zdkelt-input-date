@@ -49,7 +49,12 @@ Example:
 	</style>
 	<template>
 		<div class="layout horizontal">
-			<paper-input label="[[label]]" id="inputDate" value="{{_displayValue}}"  no-label-float="[[noLabelFloat]]" on-change="_checkEvent">
+			<paper-input label="[[label]]" id="inputDate"
+			         value="{{_displayValue}}"
+					 no-label-float="[[noLabelFloat]]"
+					 error-message="[[errorMessage]]"
+					 invalid="[[invalid]]"
+					 on-change="_checkEvent">
 				<paper-icon-button suffix id="clear" disabled icon="zdkicons:clear" on-tap="_clear"></paper-icon-button>
 				<paper-icon-button suffix id="showcal" icon="zdkicons:event" on-tap="_showCalendar"></paper-icon-button>
 			</paper-input>
