@@ -63,10 +63,10 @@ Example:
       </paper-input>
     </div>
     <iron-dropdown id="dropdown" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" entryAnimation="scale-up-animation">
-      <div class="dropdown-content">
+      <div class="dropdown-content" slot="dropdown-content">
         <zdkelt-calendar id="calendar" value="{{value}}" on-change="_setNewValue" i18n="[[i18n]]"></zdkelt-calendar>
         <div class="buttons">
-          <content></content>
+          <slot></slot>
         </div>
       </div>
     </iron-dropdown>
