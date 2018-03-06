@@ -1,196 +1,186 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <script src="../../moment/min/moment-with-locales.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../moment/min/moment-with-locales.min.js"></script>
 
-    <!-- Step 1: import the element to test -->
-    <link rel="import" href="../zdkelt-input-date.html">
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../zdkelt-input-date.html">
 </head>
 
 <body>
 
-    <!-- You can use the document as a place to set up your fixtures. -->
-    <test-fixture id="basic">
-        <template>
-            <zdkelt-input-date></zdkelt-input-date>
-        </template>
-    </test-fixture>
+  <!-- You can use the document as a place to set up your fixtures. -->
+  <test-fixture id="basic">
+    <template>
+      <zdkelt-input-date></zdkelt-input-date>
+    </template>
+  </test-fixture>
 
-    <script>
-        describe('initialize', function() {
-            var myEl;
+  <script>
+    describe('initialize', function () {
+      var myEl
 
-            beforeEach(function(done) {
-                myEl = fixture('basic');
-                done();
-            });
+      beforeEach(function (done) {
+        myEl = fixture('basic')
+        done()
+      })
 
-            it('check default i18n', function(done) {
-                assert.equal(myEl.i18n, 'fr');
-                done();
-            });
+      it('check default i18n', function (done) {
+        assert.equal(myEl.i18n, 'fr')
+        done()
+      })
 
-            it('set default value', function(done) {
-                myEl.setAttribute('value', '2016-02-05');
-                assert.equal(myEl.value, '2016-02-05');
-                assert.equal(myEl._displayValue, '05/02/2016');
-                done();
-            });
+      it('set default value', function (done) {
+        myEl.setAttribute('value', '2016-02-05')
+        assert.equal(myEl.value, '2016-02-05')
+        assert.equal(myEl._displayValue, '05/02/2016')
+        done()
+      })
 
-            it('set default value, with i18n="en"', function(done) {
-                myEl.setAttribute('i18n', 'en');
-                myEl.setAttribute('value', '2016-02-05');
-                assert.equal(myEl.value, '2016-02-05');
-                assert.equal(myEl._displayValue, '02/05/2016');
-                done();
-            });
+      it('set default value, with i18n="en"', function (done) {
+        myEl.setAttribute('i18n', 'en')
+        myEl.setAttribute('value', '2016-02-05')
+        assert.equal(myEl.value, '2016-02-05')
+        assert.equal(myEl._displayValue, '02/05/2016')
+        done()
+      })
 
-            it('set default value, then i18n="en"', function(done) {
-                myEl.setAttribute('value', '2016-02-05');
-                myEl.setAttribute('i18n', 'en');
-                assert.equal(myEl.value, '2016-02-05');
-                assert.equal(myEl._displayValue, '02/05/2016');
-                done();
-            });
+      it('set default value, then i18n="en"', function (done) {
+        myEl.setAttribute('value', '2016-02-05')
+        myEl.setAttribute('i18n', 'en')
+        assert.equal(myEl.value, '2016-02-05')
+        assert.equal(myEl._displayValue, '02/05/2016')
+        done()
+      })
 
-            it('set bad default value', function(done) {
-                myEl.setAttribute('value', 'boo');
-                assert.equal(myEl.value, '');
-                assert.equal(myEl.invalid, true);
-                assert.equal(myEl._displayValue, 'boo');
-                done();
-            });
-        });
+      it('set bad default value', function (done) {
+        myEl.setAttribute('value', 'boo')
+        assert.equal(myEl.value, '')
+        assert.equal(myEl.invalid, true)
+        assert.equal(myEl._displayValue, 'boo')
+        done()
+      })
+    })
 
-        describe('action buttons', function() {
-            var myEl;
+    describe('action buttons', function () {
+      var myEl
 
-            beforeEach(function(done) {
-                myEl = fixture('basic');
-                done();
-            });
+      beforeEach(function (done) {
+        myEl = fixture('basic')
+        done()
+      })
 
-            it('no default value, calendar display current month', function(done) {
-                assert.equal(myEl.value, '');
-                var evt = new MouseEvent("click", {
-                    button: 0
-                });
-                var btn = myEl.$.showcal;
+      it('no default value, calendar display current month', function (done) {
+        assert.equal(myEl.value, '')
+        var evt = new MouseEvent('click', {
+          button: 0,
+        })
+        var btn = myEl.$.showcal
 
-                myEl.$.dropdown.addEventListener('iron-overlay-opened', function() {
-                    assert.equal(moment(myEl.$.calendar._date).month(), moment().month());
-                    assert.equal(myEl.$.calendar.querySelectorAll('div.select').length, 0);
-                    done();
-                });
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', function () {
+          assert.equal(moment(myEl.$.calendar._date).month(), moment().month())
+          assert.equal(myEl.$.calendar.querySelectorAll('div.select').length, 0)
+          done()
+        })
 
-                btn.dispatchEvent(evt);
-            });
+        btn.dispatchEvent(evt)
+      })
 
-            it('default value selected in the calendar', function(done) {
-                myEl.value = '2016-02-15';
-                var evt = new MouseEvent("click", {
-                    button: 0
-                });
-                var btn = myEl.$.showcal;
+      it('default value selected in the calendar', function (done) {
+        myEl.value = '2016-02-15'
+        var evt = new MouseEvent('click', {
+          button: 0,
+        })
+        var btn = myEl.$.showcal
 
-                myEl.$.dropdown.addEventListener('iron-overlay-opened', function() {
-                    assert.equal(myEl.$.calendar._date, myEl.value);
-                    var day = myEl.$.calendar.querySelector("div[data-date='" + myEl.value + "']");
-                    assert.isTrue(day.classList.contains('select'));
-                    done();
-                });
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', function () {
+          assert.equal(myEl.$.calendar._date, myEl.value)
+          var day = myEl.$.calendar.querySelector("div[data-date='" + myEl.value + "']")
+          assert.isTrue(day.classList.contains('select'))
+          done()
+        })
 
-                btn.dispatchEvent(evt);
-            });
+        btn.dispatchEvent(evt)
+      })
 
-            it('selected value in the calendar set value', function(done) {
-                myEl.value = '2016-02-15';
-                var evt = new MouseEvent("click", {
-                    button: 0
-                });
-                var btn = myEl.$.showcal;
+      it('selected value in the calendar set value', function (done) {
+        myEl.value = '2016-02-15'
+        var evt = new MouseEvent('click', {
+          button: 0,
+        })
+        var btn = myEl.$.showcal
 
-                myEl.$.dropdown.addEventListener('iron-overlay-opened', function() {
-                    var evt = new MouseEvent("click", {
-                        button: 0
-                    });
-                    var day = myEl.$.calendar.querySelector("div[data-date='2016-02-20']");
-                    myEl.$.dropdown.addEventListener('iron-overlay-closed', function() {
-                        assert.equal(myEl.value, '2016-02-20');
-                        assert.equal(myEl._displayValue, '20/02/2016');
-                        done();
-                    });
-                    day.dispatchEvent(evt);
-                });
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', function () {
+          var evt = new MouseEvent('click', {
+            button: 0,
+          })
+          var day = myEl.$.calendar.querySelector("div[data-date='2016-02-20']")
+          myEl.$.dropdown.addEventListener('iron-overlay-closed', function () {
+            assert.equal(myEl.value, '2016-02-20')
+            assert.equal(myEl._displayValue, '20/02/2016')
+            done()
+          })
+          day.dispatchEvent(evt)
+        })
 
-                btn.dispatchEvent(evt);
-            });
+        btn.dispatchEvent(evt)
+      })
 
-            it('clear button', function(done) {
-                myEl.value = '2016-02-15';
-                var evt = new MouseEvent("click", {
-                    button: 0
-                });
-                var btn = myEl.$.clear;
+      it('clear button', function (done) {
+        myEl.value = '2016-02-15'
+        var evt = new MouseEvent('click', {
+          button: 0,
+        })
+        var btn = myEl.$.clear
 
-                btn.dispatchEvent(evt);
-                Polymer.Base.async(function() {
-                    assert.equal(myEl.value, '');
-                    assert.equal(myEl._displayValue, '');
-                    done();
-                }, 100);
-            });
-        });
+        btn.dispatchEvent(evt)
+        Polymer.Base.async(function () {
+          assert.equal(myEl.value, '')
+          assert.equal(myEl._displayValue, '')
+          done()
+        }, 100)
+      })
+    })
 
-        describe('event', function() {
-            var myEl;
+    describe('event', function () {
+      var myEl
 
-            beforeEach(function(done) {
-                myEl = fixture('basic');
-                done();
-            });
+      beforeEach(function (done) {
+        myEl = fixture('basic')
+        done()
+      })
 
-            it('selected value in the calendar set value', function(done) {
-                myEl.value = '2016-02-15';
-                var evt = new MouseEvent("click", {
-                    button: 0
-                });
-                var btn = myEl.$.showcal;
+      it('selected value in the calendar set value', function (done) {
+        myEl.value = '2016-02-15'
+        var evt = new MouseEvent('click', {
+          button: 0,
+        })
+        var btn = myEl.$.showcal
 
-                myEl.$.dropdown.addEventListener('iron-overlay-opened', function() {
-                    var evt = new MouseEvent("click", {
-                        button: 0
-                    });
-                    var day = myEl.$.calendar.querySelector("div[data-date='2016-02-20']");
-                    myEl.addEventListener('change', function(evt) {
-                        assert.equal(evt.detail, '2016-02-20');
-                        assert.equal(myEl.value, '2016-02-20');
-                        assert.equal(myEl._displayValue, '20/02/2016');
-                        done();
-                    });
-                    day.dispatchEvent(evt);
-                });
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', function () {
+          var evt = new MouseEvent('click', {
+            button: 0,
+          })
+          var day = myEl.$.calendar.querySelector("div[data-date='2016-02-20']")
+          myEl.addEventListener('change', function (evt) {
+            assert.equal(evt.detail, '2016-02-20')
+            assert.equal(myEl.value, '2016-02-20')
+            assert.equal(myEl._displayValue, '20/02/2016')
+            done()
+          })
+          day.dispatchEvent(evt)
+        })
 
-                btn.dispatchEvent(evt);
-            });
-
-        });
-    </script>
+        btn.dispatchEvent(evt)
+      })
+    })
+  </script>
 
 </body>
 
