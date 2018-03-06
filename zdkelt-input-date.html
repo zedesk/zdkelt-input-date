@@ -188,7 +188,7 @@ Example:
               this._displayValue = moment(this.value, 'YYYY-MM-DD').format('L')
               this.$.dropdown.close()
               this.$.clear.disabled = false
-              this.fire('change', this.value)
+              this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
               break
             }
           }
@@ -309,7 +309,7 @@ Example:
         this._displayValue = moment(this.value, 'YYYY-MM-DD').format('L')
         this.$.dropdown.close()
         this.$.clear.disabled = false
-        this.fire('change', this.value)
+        this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
       }
       /**
        *
@@ -322,7 +322,7 @@ Example:
         ) {
           this.invalid = false
           this._valueChanged(moment(this._displayValue, this._dateFormat()).format('YYYY-MM-DD'))
-          this.fire('change', this.value)
+          this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
         } else {
           this.set('invalid', true)
         }
