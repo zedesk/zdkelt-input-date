@@ -172,9 +172,7 @@ Example:
       connectedCallback() {
         super.connectedCallback()
         this._onDialogClick = this._onDialogClick.bind(this)
-        this.addEventListener('click', this._onDialogClick, {
-          passive: true
-        })
+        this.addEventListener('click', this._onDialogClick, { passive: true })
       }
 
       _onDialogClick(event) {
