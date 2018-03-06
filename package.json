@@ -7,7 +7,9 @@
     "clean": "rm -rf bower_components",
     "postinstall": "bower install",
     "start": "polymer serve -H 0.0.0.0",
-    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "lint:polymer": "polymer lint",
+    "lint": "npm run lint:polymer && npm run lint:javascript",
     "doc": "polymer analyze > analysis.json"
   },
   "repository": {
