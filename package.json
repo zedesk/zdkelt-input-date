@@ -4,25 +4,30 @@
   "description": "a date picker webcomponent",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean":"rm -rf bower_components",
-    "postinstall":"bower install",
-    "start":"polyserve"
+    "clean": "rm -rf bower_components",
+    "postinstall": "bower install",
+    "start": "polymer serve -H 0.0.0.0",
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "doc": "polymer analyze > analysis.json"
   },
   "repository": {
-    "type":"git",
-    "url":"git+https://github.com/zedesk/zdkelt-input-date.git"
+    "type": "git",
+    "url": "git+https://github.com/zedesk/zdkelt-input-date.git"
   },
   "bugs": {
-    "url":"https://github.com/zedesk/zdkelt-input-date/issues"
+    "url": "https://github.com/zedesk/zdkelt-input-date/issues"
   },
   "author": "Fabrice Le Coz",
   "license": "ISC",
   "devDependencies": {
-    "bower": "^1.7.7",
-    "crisper": "^2.0.1",
-    "jscs": "^2.9.0",
-    "polylint": "^2.9.0",
-    "polyserve": "^0.5.0",
-    "vulcanize": "^1.14.5"
+    "bower": "^1.8.2",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "polymer-cli": "^1.6.0"
   }
 }
