@@ -1,0 +1,772 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "A date picker component, based on `zdkelt-calendar`\n\nversion : __1.0.0-rc4__\n\nExample:\n\n    <zdkelt-input-date i18n=\"fr\" value=\"2016-01-25\"></zdkelt-input-date>",
+      "summary": "",
+      "path": "zdkelt-input-date.html",
+      "properties": [
+        {
+          "name": "value",
+          "type": "string",
+          "description": "Define the value of the component",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\""
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "_displayValue",
+          "type": "string",
+          "description": "The displayed date in the locale format",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 99,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "description": "The field label",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 10
+            },
+            "end": {
+              "line": 103,
+              "column": 23
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "noLabelFloat",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 10
+            },
+            "end": {
+              "line": 111,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "description": "indicate if the value is invalid",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 115,
+              "column": 10
+            },
+            "end": {
+              "line": 119,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "_dateValid",
+          "type": "boolean",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 121,
+              "column": 10
+            },
+            "end": {
+              "line": 124,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "i18n",
+          "type": "string",
+          "description": "Define the current locale\n\nif no locale is given, the locale is extract from the browser preferences",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 10
+            },
+            "end": {
+              "line": 135,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_i18nChanged\""
+            }
+          }
+        },
+        {
+          "name": "verticalAlign",
+          "type": "string",
+          "description": "The orientation against which to align the dropdown content vertically\nrelative to the dropdown trigger.\nacceptable value are \"top\" or \"bottom\"",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 141,
+              "column": 10
+            },
+            "end": {
+              "line": 144,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"top\""
+        },
+        {
+          "name": "horizontalAlign",
+          "type": "string",
+          "description": "The orientation against which to align the dropdown content horizontally\nrelative to the dropdown trigger.\nacceptable value are \"left\" or \"right\"",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 150,
+              "column": 10
+            },
+            "end": {
+              "line": 153,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"left\""
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "description": "Define the size of the dropdown calendar",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 157,
+              "column": 10
+            },
+            "end": {
+              "line": 157,
+              "column": 22
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "minDate",
+          "type": "string",
+          "description": "Define the selectable minimal date ( format : YYYY-MM-DD )",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 10
+            },
+            "end": {
+              "line": 162,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_minDateChanged\""
+            }
+          }
+        },
+        {
+          "name": "maxDate",
+          "type": "string",
+          "description": "Define the selectable maximal date ( format : YYYY-MM-DD )",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 164,
+              "column": 10
+            },
+            "end": {
+              "line": 167,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_maxDateChanged\""
+            }
+          }
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "description": "The error message to disaply if the value is invalid",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 10
+            },
+            "end": {
+              "line": 175,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "\"\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 182,
+              "column": 6
+            },
+            "end": {
+              "line": 186,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_onDialogClick",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 188,
+              "column": 6
+            },
+            "end": {
+              "line": 207,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "name": "_dispatchEvent",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 209,
+              "column": 6
+            },
+            "end": {
+              "line": 216,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_dateFormat",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 221,
+              "column": 6
+            },
+            "end": {
+              "line": 224,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 229,
+              "column": 6
+            },
+            "end": {
+              "line": 253,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ]
+        },
+        {
+          "name": "_i18nChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 6
+            },
+            "end": {
+              "line": 258,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ]
+        },
+        {
+          "name": "_formatDate",
+          "description": "transform the current value in the ISO format : 'YYYY-MM-DD'",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 262,
+              "column": 6
+            },
+            "end": {
+              "line": 264,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ]
+        },
+        {
+          "name": "_minDateChanged",
+          "description": "Set the minimal acceptable value\n\nthe date must be in format \"YYYY-MM-DD\"",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 270,
+              "column": 6
+            },
+            "end": {
+              "line": 278,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ]
+        },
+        {
+          "name": "_maxDateChanged",
+          "description": "Set the maximal acceptable value\n\nthe date must be in format \"YYYY-MM-DD\"",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 284,
+              "column": 6
+            },
+            "end": {
+              "line": 292,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ]
+        },
+        {
+          "name": "_clear",
+          "description": "Reset the current value",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 296,
+              "column": 6
+            },
+            "end": {
+              "line": 301,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_showCalendar",
+          "description": "Show the dropdown calendar",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 305,
+              "column": 6
+            },
+            "end": {
+              "line": 314,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_setNewValue",
+          "description": "Get the selected value from the calendar and close\nthe dropdown",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 319,
+              "column": 6
+            },
+            "end": {
+              "line": 329,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_checkEvent",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 333,
+              "column": 6
+            },
+            "end": {
+              "line": 348,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 77,
+          "column": 4
+        },
+        "end": {
+          "line": 349,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "ZdkEltInputDate",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Define the value of the component",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 10
+            },
+            "end": {
+              "line": 93,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "The field label",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 10
+            },
+            "end": {
+              "line": 103,
+              "column": 23
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "no-label-float",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 10
+            },
+            "end": {
+              "line": 111,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "invalid",
+          "description": "indicate if the value is invalid",
+          "sourceRange": {
+            "start": {
+              "line": 115,
+              "column": 10
+            },
+            "end": {
+              "line": 119,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "i18n",
+          "description": "Define the current locale\n\nif no locale is given, the locale is extract from the browser preferences",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 10
+            },
+            "end": {
+              "line": 135,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "vertical-align",
+          "description": "The orientation against which to align the dropdown content vertically\nrelative to the dropdown trigger.\nacceptable value are \"top\" or \"bottom\"",
+          "sourceRange": {
+            "start": {
+              "line": 141,
+              "column": 10
+            },
+            "end": {
+              "line": 144,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "horizontal-align",
+          "description": "The orientation against which to align the dropdown content horizontally\nrelative to the dropdown trigger.\nacceptable value are \"left\" or \"right\"",
+          "sourceRange": {
+            "start": {
+              "line": 150,
+              "column": 10
+            },
+            "end": {
+              "line": 153,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "Define the size of the dropdown calendar",
+          "sourceRange": {
+            "start": {
+              "line": 157,
+              "column": 10
+            },
+            "end": {
+              "line": 157,
+              "column": 22
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "min-date",
+          "description": "Define the selectable minimal date ( format : YYYY-MM-DD )",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 10
+            },
+            "end": {
+              "line": 162,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "max-date",
+          "description": "Define the selectable maximal date ( format : YYYY-MM-DD )",
+          "sourceRange": {
+            "start": {
+              "line": 164,
+              "column": 10
+            },
+            "end": {
+              "line": 167,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "error-message",
+          "description": "The error message to disaply if the value is invalid",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 10
+            },
+            "end": {
+              "line": 175,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "change",
+          "description": "change",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "invalid-changed",
+          "description": "Fired when the `invalid` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "error-message-changed",
+          "description": "Fired when the `errorMessage` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "",
+          "range": {
+            "file": "zdkelt-input-date.html",
+            "start": {
+              "line": 65,
+              "column": 10
+            },
+            "end": {
+              "line": 65,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "tagname": "zdkelt-input-date"
+    }
+  ]
+}
