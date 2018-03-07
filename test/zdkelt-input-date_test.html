@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+  <script src="../../moment/min/moment-with-locales.min.js"></script>
+
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../zdkelt-input-date.html">
+</head>
+
+<body>
+
+  <!-- You can use the document as a place to set up your fixtures. -->
+  <test-fixture id="basic">
+    <template>
+      <zdkelt-input-date></zdkelt-input-date>
+    </template>
+  </test-fixture>
+
+  <script>
+    describe('initialize', function () {
+      let myEl
+
+      beforeEach((done) => {
+        myEl = fixture('basic')
+        flush(() => done())
+      })
+
+      it('check default i18n', function (done) {
+        assert.equal(myEl.i18n, window.navigator.userLanguage || window.navigator.language)
+        done()
+      })
+
+      it('set default value', (done) => {
+        moment.locale(myEl.i18n)
+        myEl.setAttribute('value', '2016-02-05')
+        assert.equal(myEl.value, '2016-02-05')
+        assert.equal(myEl._displayValue, moment('2016-02-05').format('L'))
+        done()
+      })
+
+      it('set default value, with i18n="en-US"', (done) => {
+        myEl.setAttribute('i18n', 'en-US')
+        myEl.setAttribute('value', '2016-02-05')
+        assert.equal(myEl.value, '2016-02-05')
+        assert.equal(myEl._displayValue, '02/05/2016')
+        done()
+      })
+
+      it('set default value, then i18n="en"', (done) => {
+        myEl.setAttribute('value', '2016-02-05')
+        myEl.setAttribute('i18n', 'en')
+        assert.equal(myEl.value, '2016-02-05')
+        assert.equal(myEl._displayValue, '02/05/2016')
+        done()
+      })
+
+      it('set bad default value', (done) => {
+        myEl.setAttribute('value', 'boo')
+        assert.equal(myEl.value, '')
+        assert.equal(myEl.invalid, true)
+        assert.equal(myEl._displayValue, 'boo')
+        done()
+      })
+    })
+
+    describe('action buttons', () => {
+      let myEl
+
+      beforeEach((done) => {
+        myEl = fixture('basic')
+        flush(() => done())
+      })
+
+      it('no default value, calendar display current month', (done) => {
+        assert.equal(myEl.value, '')
+
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', () => {
+          assert.equal(moment(myEl.$.calendar._date).month(), moment().month())
+          assert.equal(myEl.$.calendar.querySelectorAll('div.select').length, 0)
+          done()
+        })
+
+        const btn = myEl.$.showcal
+        MockInteractions.tap(btn)
+      })
+
+      it('default value selected in the calendar', (done) => {
+        myEl.value = '2016-02-15'
+
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', () => {
+          flush(() => {
+            assert.equal(myEl.$.calendar._date, myEl.value)
+            const calShadow = myEl.$.calendar.shadowRoot
+            const day = calShadow.querySelector("div[data-date='" + myEl.value + "']")
+            assert.isTrue(day.classList.contains('select'))
+            done()
+          })
+        })
+
+        const btn = myEl.$.showcal
+        MockInteractions.tap(btn)
+      })
+
+      it('selected value in the calendar set value', (done) => {
+        myEl.value = '2016-02-15'
+        myEl.i18n = 'fr'
+
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', () => {
+          const calShadow = myEl.$.calendar.shadowRoot
+          const day = calShadow.querySelector("div[data-date='2016-02-20']")
+          MockInteractions.tap(day)
+        })
+
+        myEl.$.dropdown.addEventListener('iron-overlay-closed', function () {
+          assert.equal(myEl.value, '2016-02-20')
+          assert.equal(myEl._displayValue, '20/02/2016')
+          done()
+        })
+
+        const btn = myEl.$.showcal
+        MockInteractions.tap(btn)
+      })
+
+      it('clear button', function (done) {
+        myEl.value = '2016-02-15'
+        MockInteractions.tap(myEl.$.clear)
+
+        setTimeout(() => {
+          flush(() => {
+            assert.equal(myEl.value, '')
+            assert.equal(myEl._displayValue, '')
+            done()
+          })
+        }, 0)
+      })
+    })
+
+    describe('event', function () {
+      let myEl
+
+      beforeEach((done) => {
+        myEl = fixture('basic')
+        flush(() => done())
+      })
+
+      it('selected value in the calendar set value', function (done) {
+        myEl.value = '2016-02-15'
+        myEl.i18n = 'fr'
+
+        myEl.$.dropdown.addEventListener('iron-overlay-opened', () => {
+          const calShadow = myEl.$.calendar.shadowRoot
+          const day = calShadow.querySelector("div[data-date='2016-02-20']")
+          MockInteractions.tap(day)
+        })
+
+        myEl.addEventListener('change', (evt) => {
+          assert.equal(evt.detail, '2016-02-20')
+          assert.equal(myEl.value, '2016-02-20')
+          assert.equal(myEl._displayValue, '20/02/2016')
+          done()
+        })
+
+        MockInteractions.tap(myEl.$.showcal)
+      })
+    })
+  </script>
+
+</body>
+
+</html>

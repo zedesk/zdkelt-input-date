@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>zdkelt-input-date demo page</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="../../paper-styles/paper-styles.html">
 	<link rel="import" href="../zdkelt-input-date.html">
 
@@ -24,31 +24,58 @@
 
 <body>
 <div>
-	<zdkelt-input-date label="i18n : fr" i18n="fr"></zdkelt-input-date>
+	<zdkelt-input-date label="i18n : fr" i18n="fr">
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
 <div>
-	<zdkelt-input-date label="noLabelFloat" i18n="fr" no-label-float></zdkelt-input-date>
+	<zdkelt-input-date label="noLabelFloat" i18n="fr" no-label-float>
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
 <div>
-	<zdkelt-input-date label="default value" i18n="fr" value="2014-06-15"></zdkelt-input-date>
+	<zdkelt-input-date label="default value" i18n="fr" value="2019-03-15">
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
 <div>
-	<zdkelt-input-date label="min value" i18n="fr" value="2014-06-15" min-date="2015-10-20"></zdkelt-input-date>
+	<zdkelt-input-date label="min value" i18n="fr" value="2017-03-01" min-date="2017-03-16">
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
 <div>
 	<zdkelt-input-date label="invalid default value" i18n="fr"
-	        value="2014-14-12"
-	        vertical-align="bottom"
-	        error-message="invalid value"></zdkelt-input-date>
+	      value="2018-14-03"
+	      vertical-align="bottom"
+	      error-message="invalid value">
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
 <div>
-	<zdkelt-input-date label="i18n : en" i18n="en"></zdkelt-input-date>
+	<zdkelt-input-date label="i18n : en-US" i18n="en-US">
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
 <div>
-	<zdkelt-input-date label="i18n : en, sized" i18n="en" style="width:150px" size="200"></zdkelt-input-date>
+	<zdkelt-input-date label="i18n : en-GB, sized" i18n="en-GB" style="width:150px" size="200">
+		<paper-button dropdown-dismiss>Cancel</paper-button>
+		<paper-button dropdown-confirm>Valid</paper-button>
+	</zdkelt-input-date>
 </div>
-<zdkelt-input-date i18n="en" label="position absolute" class="absolute" vertical-align="bottom"
-                   horizontal-align="right"></zdkelt-input-date>
+<zdkelt-input-date i18n="en-US" 
+    label="position absolute" 
+    class="absolute" 
+    vertical-align="bottom"  
+    horizontal-align="right">
+	<paper-button dropdown-dismiss>Cancel</paper-button>
+	<paper-button dropdown-confirm>Valid</paper-button>
+</zdkelt-input-date>
 </body>
 
 </html>
