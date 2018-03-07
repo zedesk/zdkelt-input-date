@@ -15,9 +15,6 @@ version : __1.0.0-rc4__
 Example:
 
     <zdkelt-input-date i18n="fr" value="2016-01-25"></zdkelt-input-date>
-
-@group zdk Elements
-@demo
 -->
 
 <dom-module id="zdkelt-input-date">
@@ -73,7 +70,12 @@ Example:
   </template>
 
   <script type="text/javascript">
-    class ZdkEltInputDate extends Polymer.Element {
+    /**
+     * @polymer
+     * @customElement
+     * @demo demo/index.html
+     */
+    class ZdkEltInputDate extends Polymer.mixinBehaviors([], Polymer.Element) {
       static get is() {
         return 'zdkelt-input-date'
       }
@@ -175,6 +177,9 @@ Example:
         }
       }
 
+      /**
+       * @protected
+       */
       connectedCallback() {
         super.connectedCallback()
         this._onDialogClick = this._onDialogClick.bind(this)
@@ -194,12 +199,21 @@ Example:
               this._displayValue = moment(this.value, 'YYYY-MM-DD').format('L')
               this.$.dropdown.close()
               this.$.clear.disabled = false
-              this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
+              this._dispatchEvent()
               break
             }
           }
           target = target.parentNode
         }
+      }
+
+      _dispatchEvent() {
+        /**
+         * Fired when the element changes its value.
+         * @event change
+         * @param {number} detail the new date value.
+         */
+        this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
       }
 
       /**
@@ -209,6 +223,7 @@ Example:
         moment.locale(this.i18n)
         return moment.localeData()._longDateFormat.L
       }
+
       /**
        *
        */
@@ -311,7 +326,7 @@ Example:
         this._displayValue = moment(this.value, 'YYYY-MM-DD').format('L')
         this.$.dropdown.close()
         this.$.clear.disabled = false
-        this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
+        this._dispatchEvent()
       }
       /**
        *
@@ -324,7 +339,7 @@ Example:
         ) {
           this.invalid = false
           this._valueChanged(moment(this._displayValue, this._dateFormat()).format('YYYY-MM-DD'))
-          this.dispatchEvent(new CustomEvent('change', {detail: this.value}))
+          this._dispatchEvent()
         } else {
           this.set('invalid', true)
         }
