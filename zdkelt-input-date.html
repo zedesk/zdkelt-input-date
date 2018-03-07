@@ -116,6 +116,12 @@ Example:
             reflectToAttribute: true,
             notify: true,
           },
+
+          _dateValid: {
+            type: Boolean,
+            value: false,
+          },
+
           /**
            * Define the current locale
            *
@@ -211,11 +217,13 @@ Example:
           moment.locale(this.i18n)
           this.$.clear.disabled = false
           if (!moment(newValue, 'YYYY-MM-DD').isValid()) {
+            this._dateValid = false
             this.$.inputDate.invalid = true
             this.invalid = true
             this._displayValue = newValue
             this.value = ''
           } else {
+            this._dateValid = true
             if ((this.$.calendar.minDate && newValue < this.$.calendar.minDate) ||
               (this.$.calendar.maxDate && newValue > this.$.calendar.maxDate)) {
               this.$.inputDate.invalid = true
@@ -281,16 +289,11 @@ Example:
        * Show the dropdown calendar
        */
       _showCalendar() {
-        if (this.value && !this.$.inputDate.invalid) {
-          this.$.calendar.value = this._formatDate(this.value)
-          this.$.calendar.initDate = this.$.calendar.value
-        } else {
-          this.$.calendar.value = ''
-          this.$.calendar.initDate = moment().format('YYYY-MM-DD')
-        }
+        this.$.calendar.value = this.$.inputDate.invalid ? '' : this._formatDate(this.value)
+        this.$.calendar.initDate = this.value || moment().format('YYYY-MM-DD')
         if (this.size) {
           this.$.calendar.style.width = this.size + 'px'
-          this.$.calendar.style.height = this.size + 'px'
+          this.$.calendar.style.height = `${this.size * 8 / 7}px`
           this.$.calendar.style.fontSize = ((this.size / 300) * 100) + '%'
         }
         this.$.dropdown.open()
